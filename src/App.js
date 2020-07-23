@@ -6,7 +6,7 @@ import CurrentCourse from './components/UI/currentCourse/CurrentCourse';
 import UserBoard from './components/UI/mainContent/UserBoard';
 
 const AppStyled = styled.div`
-  max-width: 102.4rem;
+  width: 102.4rem;
   margin: auto;
   height: 76.8rem;
   /* background-color: pink; */
