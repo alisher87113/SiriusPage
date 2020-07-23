@@ -1,0 +1,38 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: ' Open Sans', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+  height: 20rem;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(42, 42, 59, 0.2);
+  border-radius: 12px;
+  padding-top: 13.5rem;
+  height: 10rem;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 21rem;
+  background: linear-gradient(90.27deg, #f64867 7.06%, #ba2d86 95.26%);
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+  margin-top: 13.5rem;
+}
+
+::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+  margin-bottom: 3rem;
+}
