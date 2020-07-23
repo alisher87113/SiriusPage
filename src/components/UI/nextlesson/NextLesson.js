@@ -25,9 +25,9 @@ const TextStyled = styled.span`
   top: 1.5rem;
   left: 2rem;
   color: #ffffff;
-  @media (max-width: 1365px) {
+  /* @media (max-width: 1365px) {
     left: 1rem;
-  }
+  } */
 `;
 
 // Styling timer digits and text
@@ -36,10 +36,10 @@ const NextLessonTimer = styled.p`
   margin: 0;
   bottom: 1.5rem;
   left: 2rem;
-  @media (max-width: 1365px) {
+  /* @media (max-width: 1365px) {
     bottom: 7rem;
     left: 1rem;
-  }
+  } */
 `;
 
 const Digits = styled.span`
@@ -77,10 +77,11 @@ const StartLessonBtn = styled.button`
   position: absolute;
   top: 2.2rem;
   right: 2rem;
-  @media (max-width: 1365px) {
+  cursor: pointer;
+  /* @media (max-width: 1365px) {
     top: auto;
     bottom: 2rem;
-  }
+  } */
 `;
 
 const NextLesson = () => {

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import stars from '../../../images/emblem_4.png';
 import photoFrame from '../../../images/фоторамка (1).png';
 import MenuList from './MenuList';
+import UserProfile from './UserProfile';
 
 // styling root div of side menu
 
@@ -11,7 +12,8 @@ const SideMenuStyled = styled.div`
 
   top: 0;
   left: 0;
-  width: ${(props) => props.width};
+  width: 27.7rem;
+  display: ${(props) => (props.collapsed ? 'block' : 'none')};
   background: linear-gradient(0deg, #690297 0%, #bf1399 100%);
   height: 100%;
   z-index: 10;
@@ -21,12 +23,6 @@ const SideMenuStyled = styled.div`
 const Stars = styled.img`
   position: absolute;
   right: 8.2rem;
-  top: 3rem;
-`;
-
-const PhotoFrame = styled.img`
-  position: absolute;
-  right: 3rem;
   top: 3rem;
 `;
 
@@ -44,11 +40,11 @@ const LineBreak = styled.div`
   z-index: 12;
 `;
 
-const OpenedSideMenu = ({ width }) => {
+const OpenedSideMenu = ({ collapsed }) => {
   return (
-    <SideMenuStyled width={width}>
+    <SideMenuStyled collapsed={collapsed}>
       <Stars src={stars} alt="stars" />
-      <PhotoFrame src={photoFrame} alt="photoFrame" />
+      <UserProfile collapsed={collapsed} />
       <LineBreak />
       <MenuList />
     </SideMenuStyled>

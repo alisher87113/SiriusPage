@@ -51,6 +51,7 @@ const CancelBtnStyled = styled.span`
   position: absolute;
   top: 9.2rem;
   left: 2.5rem;
+  cursor: pointer;
 `;
 
 const CancelSign = styled.img`

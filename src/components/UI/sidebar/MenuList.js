@@ -13,10 +13,11 @@ import icon8 from '../../../images/Frame 20.png';
 const MenuListStyled = styled.ul`
   list-style: none;
   position: absolute;
-
+  width: 24rem;
   top: 15.4rem;
   left: 3rem;
   /* z-index: 11; */
+
   margin: 0;
   padding: 0;
 `;
@@ -24,7 +25,7 @@ const MenuListStyled = styled.ul`
 //Styling each menu item
 const ListItem = styled.li`
   font-style: normal;
-  width: 24rem;
+  width: 100%;
   font-weight: 600;
 
   font-size: 1.4rem;
@@ -33,6 +34,7 @@ const ListItem = styled.li`
   padding-bottom: 3.4rem;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 // styling list item icon

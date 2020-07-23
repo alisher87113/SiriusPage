@@ -2,18 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import logo from '../../../images/sirius-icon.png';
 import menuBurger from '../../../images/Vector (2).png';
-import userPhotoFrame from '../../../images/фоторамка.png';
 import OpenedSideMenu from './OpenedSideMenu';
+import UserProfile from './UserProfile';
 // import MenuList from './MenuList';
-
-// const [menuWidth, setMenuWidth] = useState('0');
-// const toggleSideMenu = () => {
-//   if (menuWidth === '0') {
-//     setMenuWidth('27.7rem');
-//   } else {
-//     setMenuWidth('0');
-//   }
-// };
 
 // Styling root component so we cant see it until we reach 1024px
 const SidebarStyled = styled.div`
@@ -32,9 +23,11 @@ const SidebarStyled = styled.div`
 // Styling sirius logo
 const Logo = styled.img`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: ${(props) => (props.collapsed ? '63.4rem' : '33.8rem')};
+  left: ${(props) => (props.collapsed ? '10.4rem' : '2rem')};
+  transition: 0.2s;
+
+  z-index: 12;
 `;
 
 // styling menu burger
@@ -47,36 +40,10 @@ const MenuBurger = styled.img`
   cursor: pointer;
 `;
 
-// Styling photo frame
-const UserPhotoFrame = styled.img`
-  position: absolute;
-  bottom: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
-`;
-
-// //Styling line
-// const LineBreak = styled.div`
-//   width: 21.7rem;
-//   height: 0.2rem;
-//   position: absolute;
-//   top: 10rem;
-//   left: 3rem;
-//   display: inline-block;
-//   margin: auto;
-//   background: rgba(255, 255, 255, 0.2);
-//   border-radius: 2.1rem;
-//   z-index: 12;
-// `;
-
 const Sidebar = () => {
-  const [menuWidth, setMenuWidth] = useState('0');
+  const [collapsed, setCollapsed] = useState(false);
   const toggleSideMenu = () => {
-    if (menuWidth === '0') {
-      setMenuWidth('27.7rem');
-    } else {
-      setMenuWidth('0');
-    }
+    setCollapsed(!collapsed);
   };
   return (
     <SidebarStyled>
@@ -85,9 +52,9 @@ const Sidebar = () => {
         src={menuBurger}
         alt="menuburger"
       />
-      <Logo src={logo} alt="logo" />
-      <UserPhotoFrame src={userPhotoFrame} alt="userPhotoFrame" />
-      <OpenedSideMenu width={menuWidth} />
+      <Logo src={logo} alt="logo" collapsed={collapsed} />
+      <OpenedSideMenu collapsed={collapsed} />
+      <UserProfile />
       {/* <LineBreak />
       <MenuList /> */}
     </SidebarStyled>

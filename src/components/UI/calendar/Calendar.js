@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import logo from '../../../images/plus.png';
+import CalendarGrid from './CalendarGrid';
 
 // main calendar div
 const CalendarStyled = styled.div`
@@ -9,7 +10,6 @@ const CalendarStyled = styled.div`
   overflow: hidden;
   position: relative;
   background-color: #ffffff;
-  margin-top: 2.7rem;
 
   box-shadow: 0px 1px 4px rgba(90, 49, 100, 0.226972);
   border-radius: 10px;
@@ -34,20 +34,9 @@ const CalendarInner = styled.div`
   padding-top: 3rem;
 `;
 
-// // Styling top of calendar
-// const MonthYear = styled.span`
-//   font-size: 2.2rem;
-//   line-height: 3rem;
-//   font-weight: 600;
-//   font-style: normal;
-//   color: #2a2a3b;
-//   position: absolute;
-
-// `;
-
 // styling month selector
-const Select = styled.select`
-  width: 12rem;
+const Select = styled.input`
+  width: 20rem;
   position: absolute;
   top: 2.9rem;
   left: 2.1rem;
@@ -75,6 +64,7 @@ const AddLesson = styled.div`
   position: absolute;
   top: 2rem;
   right: 2rem;
+  cursor: pointer;
 `;
 
 const PlusSign = styled.img`
@@ -111,10 +101,39 @@ const LessonsAmount = styled.div`
 `;
 
 const Calendar = () => {
+  const [date, setDate] = useState('2020-01');
+  const [currYear, setCurrYear] = useState('');
+  const [currMonth, setCurrMonth] = useState('');
+  const [currDay, setCurrDay] = useState('');
+  useEffect(() => {
+    let date = new Date();
+    let year = date.getFullYear();
+    setCurrYear(year);
+    let month = date.getMonth() + 1;
+    setCurrMonth(month);
+    let day = date.getDate();
+    setCurrDay(day);
+    const dateArr = [year, monthModifier(month)];
+
+    setDate(dateArr.join('-'));
+  }, []);
+  const monthModifier = (month) => {
+    if (month < 10) {
+      return '0' + month;
+    } else {
+      return month;
+    }
+  };
+
+  const setNewDate = (e) => {
+    console.log(e.target.value);
+    setDate(e.target.value);
+  };
+
   return (
     <CalendarStyled>
       {/* <MonthYear>Октябрь 2020</MonthYear> */}
-      <Select name="Месяц">
+      {/* <Select name="Месяц">
         <option>Январь</option>
         <option>Февраль</option>
         <option>Март</option>
@@ -127,7 +146,16 @@ const Calendar = () => {
         <option>Октябрь</option>
         <option>Ноябрь</option>
         <option>Декабрь</option>
-      </Select>
+      </Select> */}
+      <Select
+        type="month"
+        id="start"
+        name="start"
+        min="2018-03"
+        value={date}
+        onChange={(e) => setNewDate(e)}
+      ></Select>
+
       <LessonsLeft>
         <LessonsLeftText>
           Осталось
@@ -139,6 +167,13 @@ const Calendar = () => {
         <PlusSign src={logo} alt="plus sign" />
         Добавить урок
       </AddLesson>
+      <CalendarGrid
+        currYear={currYear}
+        currMonth={currMonth}
+        currDay={currDay}
+        date={date}
+      />
+      {/* <CalendarGrid /> */}
     </CalendarStyled>
   );
 };

@@ -28,11 +28,52 @@ const MonsterPic = styled.img`
   right: 0%;
 `;
 
+const SharedTextStyle = styled.p`
+  font-style: normal;
+  color: #ffffff;
+  position: absolute;
+  margin: 0;
+`;
+
+const CourseName = styled(SharedTextStyle)`
+  font-weight: 600;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  top: 7.7rem;
+  left: 2.5rem;
+`;
+
+const LevelInCourse = styled(SharedTextStyle)`
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  opacity: 0.7;
+  font-weight: normal;
+  top: 13.1rem;
+  left: 2.6rem;
+`;
+const IsPaid = styled.div`
+  font-weight: 800;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  font-style: normal;
+  color: #ffffff;
+  padding: 0.8rem 1.5rem 0.9rem 1.5rem;
+  border-radius: 5rem;
+  background-color: #1ac9b7;
+  display: inline-block;
+  position: absolute;
+  bottom: 3.5rem;
+  left: 2.6rem;
+`;
+
 const Header = () => {
   return (
     <HeaderStyled>
       <BookLogo src={book} alt="book" />
       <MonsterPic src={monster} alt="monster" />
+      <CourseName>Курс ментальная арифметика</CourseName>
+      <LevelInCourse>3 урок, 1 уровень</LevelInCourse>
+      <IsPaid>Оплечено</IsPaid>
     </HeaderStyled>
   );
 };
